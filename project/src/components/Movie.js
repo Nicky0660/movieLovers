@@ -19,15 +19,12 @@ function Movie({
   movieLink
 }){
 
-  const[isHovered,setIsHovered]=useState(false)
+  const[isClicked,setIsClicked]=useState(false)
     
-  function handleMouseEnter(){
-    setIsHovered(true);
+  function handleClick(){
+    setIsClicked(!isClicked);
   }
 
-  function handleMouseLeave(){
-    setIsHovered(false);
-  }
 
   
   
@@ -39,7 +36,7 @@ function Movie({
         .then(onhandleDelete(id))
   }
 
-  // const cardClass = `card${isHovered ? '' : 'hover' }`;
+
 
   const firstInfo =
     <div>
@@ -82,10 +79,10 @@ function Movie({
     
   
   return(
-        <div className={'card'} onMouseEnter={handleMouseEnter} onMouseLeave={handleMouseLeave}>
+        <div className={'card'} onClick={handleClick}>
               <img src={poster} alt={name} /> 
               <div className="card-info">
-                {isHovered ? secondInfo : firstInfo}               
+                {isClicked ? secondInfo : firstInfo}               
               </div>
         </div>
     );
